@@ -1,5 +1,7 @@
 /* - - - - RESET CSS - - - - */
 
+/* cursor grab - grabbing */
+
 * {
     margin: 0;
     padding: 0;
@@ -45,7 +47,7 @@ select {
 
 section.is-slider-gallery {
     width: 100%;
-    height: 90svh;
+    height: 80svh;
 }
 
 .slider-gallery-component {
@@ -68,6 +70,17 @@ section.is-slider-gallery {
     height: 100%;
 }
 
+.slider-bg-component::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: linear-gradient(180deg, #2520201A 0%, #252020E6 100%);
+
+    z-index: 5;
+}
+
 .swiper.is-slider-bg {
     width: 100%;
     height: 100%;
@@ -83,6 +96,7 @@ section.is-slider-gallery {
     height: 100%;
 }
 
+
 .swiper-slide.is-slider-bg img {
     width: 100%;
     height: 100%;
@@ -90,11 +104,14 @@ section.is-slider-gallery {
     object-fit: cover;
 }
 
+
 .slider-tiles-component {
     position: relative;
 
     width: 100%;
     height: 100%;
+
+    z-index: 10;
 }
 
 .swiper.is-slider-titles {
@@ -114,30 +131,66 @@ section.is-slider-gallery {
     width: auto;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 40px;
 
-    padding: 4%;
-    cursor: pointer;
+    padding: 12% 4% 0;
+    cursor: grab;
 }
 
 .slider-titles-heading {
     font-family: "Oswald", sans-serif;
     font-size: 70px;
     font-weight: 500;
+    line-height: 55px;
     text-transform: uppercase;
+    text-align: center;
 
     -webkit-text-stroke: 2px white;
     text-stroke: 2px white;
     color: transparent;
     text-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
 
+    opacity: .5;
     transition: all .3s ease-in-out;
 }
 
 .swiper-slide.is-slider-titles.is-active>.slider-titles-heading {
+    opacity: 1;
+
     -webkit-text-stroke: 2px transparent;
     text-stroke: 2px transparent;
     color: white;
+}
+
+.text-details {
+    position: relative;
+    left: 30px;
+    max-width: 500px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    line-height: 28px;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+
+    text-align: center;
+
+    color: #fff;
+
+    opacity: 0;
+
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+    transition: all 1s ease-in-out;
+    z-index: 10;
+}
+
+.swiper-slide.is-slider-titles.is-active .text-details {
+    opacity: 1;
+    left: 0;
+    text-shadow: 0 6px 6px rgba(0, 0, 0, 0.85);
 }
 
 .slider-gallery-bottom-wrapper {
@@ -147,8 +200,8 @@ section.is-slider-gallery {
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 3%;
-    z-index: 1;
+    padding: 0 3% 20px;
+    z-index: 10;
 }
 
 .slider-gallery-button-wrapper {
@@ -185,45 +238,69 @@ section.is-slider-gallery {
 
 .slider-gallery-numbers {
     font-family: "Montserrat", sans-serif;
-    font-size: .8rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
     color: #fff;
 }
 
-.slider-thumbs-component {
-    width: 40%;
-    height: 120px;
+.swiper-number-current {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.slider-thumbs-wrap {
-    width: 33.3333%;
-    height: 100%;
+
+
+@media screen and (max-width:1024px) {
+    .swiper-slide.is-slider-titles {
+        padding: 18% 2% 0;
+    }
+
+    .slider-titles-heading {
+        font-size: 50px;
+        opacity: .75;
+
+        -webkit-text-stroke: 1px white;
+        text-stroke: 1px white;
+    }
 }
 
-.swiper.is-slider-thumbs {
-    height: 100%;
-    overflow: visible;
+@media screen and (max-width:850px) {
+    .swiper-slide.is-slider-titles {
+        padding: 18% 10px 0;
+        max-width: 75%;
+    }
+
+    .text-details {
+        padding: 0 30px;
+    }
 }
 
-.swiper-wrapper.is-slider-thumbs {
-    display: flex;
-    align-items: stretch;
+@media screen and (max-width:701px) {
+    .swiper-slide.is-slider-titles {
+        padding: 28% 10px 0;
+        max-width: 75%;
+    }
+
+    .slider-titles-heading {
+        font-size: 40px;
+        line-height: 42px;
+        opacity: 1;
+    }
+
+    .text-details {
+        font-size: .9rem;
+        line-height: 24px;
+        padding: 0 15px;
+    }
 }
 
-.swiper-slide.is-slider-thumbs {
-    width: 100%;
-    height: 100%;
-}
+@media screen and (max-width:500px) {
+    section.is-slider-gallery {
+        height: 85svh;
+    }
 
-.slider-thumbs-height {
-    position: relative;
-    padding-top: 62%;
-}
-
-.slider-thumbs-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    .swiper-slide.is-slider-titles {
+        padding: 28% 7px 0;
+    }
 }

@@ -13,24 +13,24 @@ $('.slider-gallery-component').each(function (index) {
     const bgSwiper = new Swiper($(this).find('.swiper.is-slider-bg')[0], {
         slidesPerView: 1,
         loop: true,
-        speed: 600,
+        speed: 1000,
         keyboard: true,
         effect: 'fade',
         allowTouchMove: false,
         preloadImages: true,
     });
 
-    const thumbSwiper = new Swiper($(this).find('.swiper.is-slider-thumbs')[0], {
-        slidesPerView: 1,
-        speed: 600,
-        loop: true,
-        loopedSlides: 6,
-        slideToClickedSlide: true
-    });
+    /* 
+        const thumbsSwiper = new Swiper($(this).find('.swiper.is-slider-thumbs')[0], {
+            slidesPerView: 1,
+            speed: 1000,
+            slideToClickedSlide: true,
+        });
+     */
 
     const textSwiper = new Swiper($(this).find('.swiper.is-slider-titles')[0], {
         slidesPerView: "auto",
-        speed: 600,
+        speed: 1000,
         loop: true,
         loopSlides: 8,
         slideToClickedSlide: true,
@@ -48,7 +48,10 @@ $('.slider-gallery-component').each(function (index) {
             prevEl: $(this).find('.swiper-prev')[0],
         }
     });
-
+    /* 
+        textSwiper.controller.control = thumbsSwiper
+        thumbsSwiper.controller.control = textSwiper
+     */
     textSwiper.on('slideChange', function () {
         let slideNumber = numberWithZero(textSwiper.realIndex + 1)
         $('.swiper-number-current').text(slideNumber)
