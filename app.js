@@ -1,3 +1,14 @@
+function numberWithZero(num) {
+    if (num < 10) {
+        return `0${num}`
+    } else {
+        return num
+    }
+}
+let totalSlides = $('.slider-titles-heading').length
+
+$('.swiper-total-number').text(numberWithZero(totalSlides))
+
 $('.slider-gallery-component').each(function (index) {
     const bgSwiper = new Swiper($(this).find('.swiper.is-slider-bg')[0], {
         slidesPerView: 1,
@@ -5,7 +16,8 @@ $('.slider-gallery-component').each(function (index) {
         speed: 600,
         keyboard: true,
         effect: 'fade',
-        allowTouchMove: false
+        allowTouchMove: false,
+        preloadImages: true,
     });
 
     const thumbSwiper = new Swiper($(this).find('.swiper.is-slider-thumbs')[0], {
@@ -36,4 +48,9 @@ $('.slider-gallery-component').each(function (index) {
             prevEl: $(this).find('.swiper-prev')[0],
         }
     });
+
+    textSwiper.on('slideChange', function () {
+        let slideNumber = numberWithZero(textSwiper.realIndex + 1)
+        $('.swiper-number-current').text(slideNumber)
+    })
 });
