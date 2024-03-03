@@ -1,7 +1,5 @@
 /* - - - - RESET CSS - - - - */
 
-/* cursor grab - grabbing */
-
 * {
     margin: 0;
     padding: 0;
@@ -135,8 +133,12 @@ section.is-slider-gallery {
     align-items: center;
     gap: 40px;
 
-    padding: 12% 4% 0;
+    padding: 20svh 4% 0;
     cursor: grab;
+}
+
+.swiper-slide.is-slider-titles:active {
+    cursor: grabbing;
 }
 
 .slider-titles-heading {
@@ -194,6 +196,9 @@ section.is-slider-gallery {
 }
 
 .slider-gallery-bottom-wrapper {
+    position: absolute;
+    bottom: 0;
+
     width: 100%;
 
     display: flex;
@@ -216,12 +221,21 @@ section.is-slider-gallery {
     width: 45px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    border: 2px solid #81d8cf00;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    background-color: rgba(0, 0, 0, 0.35);
+    transition: all .3s ease-in-out;
+
+}
+
+.slider-gallery-button:hover {
+    border: 2px solid rgba(129, 216, 207, 0.1);
     background-color: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
 }
 
 .slider-gallery-button.swiper-next {
@@ -245,17 +259,17 @@ section.is-slider-gallery {
 }
 
 .swiper-number-current {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 800;
+
+    color: rgba(255, 255, 255, 0.3);
+
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
 }
 
-
+/* - - - - RESPONSIVITY WIDTH - - - - */
 
 @media screen and (max-width:1024px) {
-    .swiper-slide.is-slider-titles {
-        padding: 18% 2% 0;
-    }
-
     .slider-titles-heading {
         font-size: 50px;
         opacity: .75;
@@ -267,7 +281,7 @@ section.is-slider-gallery {
 
 @media screen and (max-width:850px) {
     .swiper-slide.is-slider-titles {
-        padding: 18% 10px 0;
+        padding: 12svh 10px 0;
         max-width: 75%;
     }
 
@@ -278,8 +292,7 @@ section.is-slider-gallery {
 
 @media screen and (max-width:701px) {
     .swiper-slide.is-slider-titles {
-        padding: 28% 10px 0;
-        max-width: 75%;
+        padding: 18svh 10px 0;
     }
 
     .slider-titles-heading {
@@ -293,14 +306,70 @@ section.is-slider-gallery {
         line-height: 24px;
         padding: 0 15px;
     }
+
+    .swiper-number-current {
+        font-size: 3rem;
+    }
 }
 
 @media screen and (max-width:500px) {
     section.is-slider-gallery {
-        height: 85svh;
+        height: 90svh;
+    }
+}
+
+/* - - - - RESPONSIVITY HEIGHT - - - - */
+
+@media screen and (max-width: 850px) and (max-height: 800px) {
+    .swiper-slide.is-slider-titles {
+        padding: 18svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 500px) and (max-height: 800px) {
+    .swiper-slide.is-slider-titles {
+        padding: 20svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 400px) and (max-height: 700px) {
+    .swiper-slide.is-slider-titles {
+        padding: 10svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 350px) and (max-height: 700px) {
+    .swiper-slide.is-slider-titles {
+        padding: 4svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 400px) and (max-height: 740px) {
+    .swiper-slide.is-slider-titles {
+        padding: 8svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 730px) and (max-height: 600px) {
+    .swiper-slide.is-slider-titles {
+        padding: 12svh 10px 0;
+    }
+}
+
+@media screen and (max-width: 400px) and (max-height: 600px) {
+    .swiper-slide.is-slider-titles {
+        padding: 4svh 5px 0;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 340px) and (max-height: 600px) {
+    .swiper-slide.is-slider-titles {
+        padding: 4svh 3px 0;
+        gap: 10px;
     }
 
-    .swiper-slide.is-slider-titles {
-        padding: 28% 7px 0;
+    .text-details {
+        line-height: 22px;
     }
 }
